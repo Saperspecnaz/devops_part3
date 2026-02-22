@@ -1,15 +1,15 @@
-version: '3.7'
-
 services:
-  node-dev-env:
-    build: .
-    command: npm start
-    ports: 
-      - 3000:3000
-    volumes:
-      - ./:/usr/src/app
-      - node_modules:/usr/src/app/node_modules
-    container_name: node-dev-env
+  app:
+    image: saperspecnaz/node-ci-app:latest
+    ports:
+      - "3000:3000"
 
-volumes:
-  node_modules:
+  watchtower:
+    image: containrrr/watchtower:1.7.1
+    container_name: watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - DOCKER_API_VERSION=1.53
+    command: --interval 30 --debug
+
