@@ -25,3 +25,6 @@ jobs:
           context: .
           push: true
           tags: saperspecnaz/node-ci-app:latest
+          
+      - name: Trigger Render deploy
+        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
