@@ -10,7 +10,7 @@ app.get('/plus', (req, res) => {
   if (!x || !y) return res.send('Add x and y as query parameters')
 
   const solution = plus(Number(x), Number(y))
-  res.send("///dxsxd " + solution)
+  res.send("fixing images " + solution)
 })
 
 app.get('*', function (_req, res) {
